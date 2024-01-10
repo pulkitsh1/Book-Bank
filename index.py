@@ -9,7 +9,7 @@ import datetime
 
 app = Flask(__name__)
 
-app.secret_key = 'your_secret_key'
+app.secret_key = os.getenv('APP_SECRET_KEY')
 
 
 
@@ -28,7 +28,7 @@ salt = bcrypt.gensalt()
 
 def get_token(email):
      # Define a secret key (this should be kept secret)
-        secret_key = "your-secret-key"
+        secret_key = os.getenv('SECRET_KEY')
 
         # Define the payload (claims) of the token
         payload = {
@@ -56,7 +56,7 @@ def send_mail(user):
     mail.send(msg)
 
 def verify_token(token):
-    secret_key = "your-secret-key"
+    secret_key = os.getenv('SECRET_KEY')
     try:
         # Verify and decode the token
         decoded_payload = jwt.decode(token, secret_key, algorithms=['HS256'])
@@ -75,7 +75,7 @@ def verify_token(token):
 
 @app.before_request
 def before_request():
-    secret_key = "your-secret-key"
+    secret_key = os.getenv('SECRET_KEY')
     # Exclude specific routes from token verification (e.g., login route)
     if request.endpoint and request.endpoint != 'login' and request.endpoint != 'register':
         token = request.headers.get('Authorization')
@@ -149,7 +149,7 @@ def login():
                 return jsonify({'error': 'Incorrect password'}), 401
             
             # Define a secret key (this should be kept secret)
-            secret_key = "your-secret-key"
+            secret_key = os.getenv('SECRET_KEY')
 
             # Define the payload (claims) of the token
             payload = {
