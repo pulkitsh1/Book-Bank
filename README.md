@@ -1,2 +1,2 @@
 # Book-Bank
-E-commerce book selling website
+"Book Bank is an e-commerce website powered by Flask, offering a seamless online bookstore experience. Users can register, log in, and enjoy secure password reset functionality. The platform enables browsing a diverse selection of books, adding favorites to the shopping cart, and placing orders. The system prioritizes user experience, providing personalized features such as updating user profiles. Book Bank ensures data security through password hashing, JWT-based authentication, and robust error handling."
