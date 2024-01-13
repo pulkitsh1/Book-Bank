@@ -160,8 +160,6 @@ def login():
             # Generate the token
             token = jwt.encode(payload, secret_key, algorithm='HS256')
 
-            print("JWT Token:", token)
-
             return jsonify({'message': "Login successful"}), 200
 
         except Exception as e:
